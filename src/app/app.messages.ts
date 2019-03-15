@@ -1,0 +1,16 @@
+export enum MESSAGES {
+    _erro = 'Um erro ocorreu, entre em contato com a equipe de desenvolvimento responsável.',
+    _aviso = 'Não foi possível realizar esta ação.',
+    _success_alt_prod = 'Informações do Produto foram atualizadas com sucesso',
+    _success_cad_prod = 'Produto cadastrado com sucesso',
+    _data_invalida = 'Selecione uma data válida',
+    _success_alt_estoque = 'Estoque alterado com sucesso',
+    _aviso_alt_estoque = 'Valor do estoque deve ser maior que 0',
+    _aviso_justificativa_em_branco = 'Informe a justificativa da alteração do estoque',
+    _success_alt_usuario = 'Informações do Usuário foram atualizadas com sucesso',
+    _success_cad_usuario = 'Usuário cadastrado com sucesso',
+    _cpf_invalido = 'CPF inválido, tente novamente!',
+    _cpf_em_branco = 'Informe o seu CPF',
+    _imagem_extensao_invalida = 'Imagem inválida, só é aceito PNG e JPG',
+    _cpfNome_em_branco = 'Informe o CPF ou nome do usuário',
+}

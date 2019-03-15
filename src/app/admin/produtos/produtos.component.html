@@ -1,0 +1,54 @@
+<div class="row">
+
+  <div class="col-12">    
+      <button type="button" class="btn btn-primary" (click)="novoProduto()">Adicionar Novo Produto</button>
+  </div>
+
+  <div [ngClass]="navigated ? 'col-sm-12 col-md-12 col-lg-9 col-xl-6' : 'col-12'" >
+    <div class="card mt-3">
+      <div class="card-header text-center">
+        <h4 class="font-light">Produtos</h4>
+      </div>
+
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Produto</th>
+            <th scope="col">Descrição</th>
+            <th scope="col" class="text-center">Valor da Unidade</th>
+            <th scope="col" class="text-center">Status</th>
+            <th scope="col" class="text-center">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="7" class="text-center" *ngIf="produtos.length == 0" >
+              Não existe itens para serem exibidos
+            </td>
+          </tr>
+          <tr *ngFor="let item of produtos; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ item.nome }}</td>
+            <td>{{ item.descricao == '' ? 'Nenhuma informação descrita' : item.descricao }}</td>
+            <td class="text-center">{{ item.valorUnidade }}</td>
+            <td class="text-center">
+              <div [ngClass]="item.isActive ? 'badge badge-success': 'badge badge-danger'" >
+                {{ item.isActive ? 'Ativo' : 'Inativo' }}
+              </div>
+            </td>
+            <td class="text-center">
+              <button type="button" class="btn btn-sm btn-light" (click)="editarProduto(item)">Editar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-container *ngIf="navigated">
+    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-6">
+      <router-outlet></router-outlet>
+    </div>
+  </ng-container>
+</div>

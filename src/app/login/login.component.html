@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-center h-100">
+
+  <div class="form-signin text-center align-self-center">
+    <img class="mb-4" src="assets/imgs/logo.png" alt="" height="200">
+
+    <h1 class="h3 mb-3 font-weight-normal">Sala de Descompressão</h1>
+
+    <label for="inputCpf" class="sr-only">Cpf</label>
+
+    <input type="text" id="inputCpf" name="inputCpf" class="form-control text-center" [textMask]="{mask: mask}"
+      placeholder="Digite o CPF" [(ngModel)]="usuario.cpf" required autofocus autocomplete="off">
+
+    <!-- <label for="inputPassword" class="sr-only">Senha</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Digite a Senha" required> -->
+
+    <button class="btn btn-lg btn-sm btn-block mt-3" type="button" (click)="entrar()">Entrar</button>
+
+    <div class="alert alert-light mt-3 text-danger" role="alert" *ngIf="msgErro.trim() != ''">
+      <b>{{ msgErro }}</b>
+    </div>
+
+    <p class="mt-5 mb-3 text-muted">SD &copy; by Victor Alves - 2018 - 2019</p>
+  </div>
+</div>
+
+<div class="pace"></div>

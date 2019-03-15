@@ -1,0 +1,52 @@
+<div class="row">
+
+  <div class="col-12">    
+      <button type="button" class="btn btn-primary" (click)="novoUsuario()">Adicionar Novo Usuário</button>
+  </div>
+
+  <div [ngClass]="navigated ? 'col-sm-12 col-md-12 col-lg-9 col-xl-6' : 'col-12'" >
+    <div class="card mt-3">
+      <div class="card-header text-center">
+        <h4 class="font-light">Usuários</h4>
+      </div>
+
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col" class="text-center">Status</th>
+            <th scope="col" class="text-center">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="7" class="text-center" *ngIf="usuarios.length == 0" >
+              Não existe itens para serem exibidos
+            </td>
+          </tr>
+          <tr *ngFor="let item of usuarios; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ item.nome }}</td>
+            <td>{{ item.cpf }}</td>
+            <td class="text-center">
+              <div [ngClass]="item.ativo ? 'badge badge-success': 'badge badge-danger'" >
+                {{ item.ativo ? 'Ativo' : 'Inativo' }}
+              </div>
+            </td>
+            <td class="text-center">
+              <button type="button" class="btn btn-sm btn-light" (click)="editarUsuario(item)">Editar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-container *ngIf="navigated">
+    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-6">
+      <router-outlet></router-outlet>
+    </div>
+  </ng-container>
+</div>

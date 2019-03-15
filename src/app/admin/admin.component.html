@@ -1,0 +1,128 @@
+<nav class="navbar fixed-top navbar-dark navbar-expand-sm bg-primary text-white flex-xs-nowrap">
+
+    <a class="navbar-brand mr-auto" [routerLink]="['Dashboard']">
+        <div class="d-flex align-items-center">
+            <img src="assets/imgs/logo.png" height="65">
+            <h3 class="font-light pl-3">SD Admin</h3>
+        </div>
+    </a>
+
+    <ul class="navbar-nav d-flex justify-content-center align-items-center">
+        <!-- <li class="nav-item px-3 d-flex justify-content-center align-items-center">
+            <button type="button" class="btn btn-link pb-0 text-white">
+                <span class="badge badge-pill d-flex justify-content-center align-items-center">0</span>
+                <span class="material-icons">mail</span>
+            </button>
+        </li> -->
+        <li class="nav-item nav-user pl-3 d-flex justify-content-center align-items-center">
+            <div class="d-flex flex-column mr-3 text-right">
+                <span>{{Usuario.nome}}</span>
+                <span>{{Usuario.cpf}}</span>
+            </div>
+            <i class="material-icons">account_circle</i>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid wpt-80 h-100">
+    <div class="row h-100">
+
+        <div [ngClass]="isClosed ? 'closeAnimation sidebar-icon bg-white sidebar' : 'col-xl-2 col-lg-2 col-md-4 col-xs-1 bg-white sidebar'">
+
+            <div class="sidebar-sticky-sm bg-white text-center" [hidden]="!isClosed">
+                <div class="sidebar-scrolling">
+                    <h6 class="sidebar-heading py-2 m-0 bg-light text-muted">
+                        <a class="btn btn-link btn-sm align-self-center" (click)="toogleMenu()">
+                            <i class="material-icons pt-1">menu</i>
+                        </a>
+                    </h6>
+
+                    <nav class="menu-principal nav flex-column">
+
+                        <ng-container *ngFor="let m of menu">
+                            <a class="nav-link d-flex justify-content-center align-items-center" *ngIf="!m.isDrop"
+                                [routerLink]="[m.url]" routerLinkActive="active">
+                                <i class="material-icons">{{m.icon}}</i>
+                            </a>
+
+                            <div class="btn-group d-block" dropdown #dropdown="bs-dropdown" [autoClose]="true" *ngIf="m.isDrop">
+
+                                <button dropdownToggle type="button" class="btn btn-link btn-block wpy-12 d-flex justify-content-center align-items-center text-center dropdown-toggle"
+                                    [ngClass]="{'bg-light': dropdown.isOpen }">
+                                    <i class="material-icons">{{m.icon}}</i>
+                                </button>
+
+                                <ul *dropdownMenu class="dropdown-menu py-0" role="menu">
+                                    <li role="menuitem" *ngFor="let item of m.lista">
+                                        <a #teste class="dropdown-item wpr-32 wpy-12 d-flex align-items-center"
+                                            [routerLink]="[item.url]" routerLinkActive="active">
+                                            <i class="material-icons pr-2">{{item.icon}}</i>{{item.title}}
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </ng-container>
+
+                        <a class="pointer nav-link d-flex justify-content-center align-items-center" (click)="sair()">
+                            <i class="material-icons">meeting_room</i>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="sidebar-sticky bg-white" [hidden]="isClosed">
+                <div class="sidebar-scrolling">
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 py-2 m-0 text-muted bg-light">
+                        <span>Menu Principal</span>
+                        <a class="btn btn-link btn-sm align-self-center" (click)="toogleMenu()">
+                            <i class="material-icons pt-1">menu</i>
+                        </a>
+                    </h6>
+
+                    <nav class="menu-principal nav flex-column">
+
+                        <ng-container *ngFor="let m of menu">
+                            <a class="nav-link d-flex align-items-center" *ngIf="!m.isDrop" [routerLink]="[m.url]"
+                                routerLinkActive="active" (click)="sidebarSM()">
+                                <i class="material-icons pl-2 pr-3">{{m.icon}}</i>{{m.title}}
+                            </a>
+
+                            <div class="btn-group d-block" dropdown #dropdown="bs-dropdown" [autoClose]="true" *ngIf="m.isDrop">
+
+                                <button dropdownToggle type="button" class="btn btn-link btn-block wpx-16 wpy-12 text-dark d-flex dropdown-toggle"
+                                    [ngClass]="{'bg-light': dropdown.isOpen }">
+                                    <i class="material-icons pl-2 pr-3">{{m.icon}}</i> {{m.title}}
+                                    <i class="material-icons ml-auto">{{ !dropdown.isOpen ? 'chevron_right' :
+                                        'expand_more' }}</i>
+                                </button>
+
+                                <ul *dropdownMenu class="dropdown-menu py-0" role="menu">
+                                    <li role="menuitem" *ngFor="let item of m.lista">
+                                        <a class="dropdown-item wpx-32 wpy-12 d-flex align-items-center" [routerLink]="[item.url]"
+                                            routerLinkActive="active" (click)="sidebarSM()">
+                                            <i class="material-icons mr-2">{{item.icon}}</i>
+                                            {{item.title}}
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </ng-container>
+
+                        <a class="pointer nav-link d-flex align-items-center" (click)="sair()">
+                            <i class="material-icons pl-2 pr-3">meeting_room</i>Sair
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="main" [ngClass]="isClosed ? 'w-100 wml-83 wpr-15' : 'col-xl-10 offset-xl-2 col-lg-10 offset-lg-2 col-md-8 offset-md-4 col-xs-11 offset-xs-1'">
+            <div class="pt-3">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+
+    </div>
+</div>

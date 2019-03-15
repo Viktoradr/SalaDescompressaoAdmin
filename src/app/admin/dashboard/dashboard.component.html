@@ -1,0 +1,145 @@
+<div class="row">
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">Produtos</div>
+
+        <div class="d-flex justify-content-between">
+
+          <div class="d-flex flex-column text-left">
+            <h4 class="mb-0">{{countProdutos}}</h4>
+            <span class="text-muted">Cadastrados</span>
+          </div>
+
+          <div class="d-flex flex-column text-right">
+            <h4 class="mb-0">R$ {{totalValorProduto == 0 ? '0.00' : totalValorProduto}}</h4>
+            <span class="text-muted">Valor Total em Produtos</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">Estoque</div>
+
+        <div class="d-flex justify-content-between">
+
+          <div class="d-flex flex-column text-left">
+            <h4 class="mb-0">{{countProdutosEstoque}}</h4>
+            <span class="text-muted">Total em Estoque</span>
+          </div>
+
+          <div class="d-flex flex-column text-right">
+            <h4 class="mb-0">{{maiorProdutoEmEstoque}}</h4>
+            <span class="text-muted">Produto em maior quantidade</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">Compras</div>
+
+        <div class="d-flex justify-content-between">
+
+          <div class="d-flex flex-column text-left">
+            <h4 class="mb-0">{{countCartNoMes}}</h4>
+            <span class="text-muted">Realizadas no Mês</span>
+          </div>
+
+          <div class="d-flex flex-column text-right">
+            <h4 class="mb-0">{{produtoMaisCompradoMes}}</h4>
+            <span class="text-muted">Mais Comprado no Mês</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="col-3">
+    <div class="card">
+      <div class="card-body"></div>
+    </div>
+  </div> -->
+</div>
+
+<div class="card my-3">
+  <div class="card-header text-center d-flex justify-content-between">
+    <div></div>
+
+    <h4 class="font-light">Estoque</h4>
+
+    <div>
+      <button type="button" class="btn btn-sm btn-primary" *ngIf="!editarEstoque" (click)="editarEstoque = !editarEstoque">Alterar
+        Estoque</button>
+      <button type="button" class="btn btn-sm btn-success" *ngIf="produtosAlterados.length > 0 && editarEstoque"
+        (click)="openModal(template)">Salvar</button>
+      <button type="button" class="btn btn-sm btn-secondary" *ngIf="produtosAlterados.length == 0 && editarEstoque"
+        (click)="this.habilitarEdicaoEstoque()">Fechar</button>
+    </div>
+  </div>
+
+  <table class="table mb-0">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Produto</th>
+        <th scope="col">Descrição</th>
+        <th scope="col" class="text-center">Valor da Unidade</th>
+        <th scope="col" class="text-center">Qtd. em estoque</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="6" class="text-center" *ngIf="produtos.length == 0">
+          Não existe itens para serem exibidos
+        </td>
+      </tr>
+      <tr *ngFor="let item of produtos; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ item.nome }}</td>
+        <td>{{ item.descricao == '' ? 'Nenhuma informação descrita' : item.descricao }}</td>
+        <td class="text-center">{{ item.valorUnidade }}</td>
+        <td class="d-flex justify-content-center">
+          <span *ngIf="!editarEstoque">{{ item.estoque }}</span>
+          <input #inp *ngIf="editarEstoque" type="text" class="form-control form-control-sm text-center py-0" style="width: 50px; height: 22px;"
+            [value]="item.estoque" [(ngModel)]="item.estoque" (input)="alterarProduto(item, inp)" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Justificativa</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="form-row">
+
+      <div class="form-group col-12">
+        <textarea class="form-control" id="justif" rows="5" required placeholder="Explique aqui o porque da alteração." [(ngModel)]="usuario.justificativa"></textarea>
+      </div>
+
+    </div>
+
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-sm btn-secondary" (click)="modalRef.hide()">Fechar</button>
+        <button class="btn btn-sm btn-primary ml-2" (click)="alterarEstoque()">Alterar</button>
+    </div>
+  </div>
+</ng-template>

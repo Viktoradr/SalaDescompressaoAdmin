@@ -1,1 +1,224 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --verde-escuro:#058a50;
+  --verde-claro:#259446;
+  --laranja-escuro: #da542e;
+  --laranja-claro: #ed9c28;
+  --amarelo: #FFA500;
+  --roxo: #2b355d;
+  --cinza-mais-escuro:#2b2a2a;
+  --cinza-menos-escuro: #424242;
+  --cinza-escuro: #8c8e8e;
+  --cinza-claro: #a9a0a0;
+  --cinza-mais-claro: #eeeeee;
+  --azul:dodgerblue;
+  --vermelho-escuro:#c02e31;
+  --vermelho-claro: #c53235;
+  --marron:#795548;
+
+  --prazo-btn-danger: #FF4040;
+  --prazo-btn-primary: #6CA6CD;
+  --prazo-btn-success: #8FBC8F;
+
+  --app-verde-escuro:#058a50;
+  --app-verde-claro:#259446;
+  --app-laranja-escuro: #da542e;
+  --app-laranja-claro: #ed9c28;
+  --app-amarelo: #FFA500;
+  --app-roxo: #2b355d;
+  --app-cinza-mais-escuro:#2b2a2a;
+  --app-cinza-menos-escuro: #424242;
+  --app-cinza: #6c757d;
+  --app-cinza-escuro: #8c8e8e;
+  --app-cinza-claro: #a9a0a0;
+  --app-cinza-mais-claro: #eeeeee;
+  --app-azul:#428bca;
+  --app-vermelho-mais-escuro: #FF0000;
+  --app-vermelho-escuro:#c02e31;
+  --app-vermelho-claro: #c53235;
+  --app-marron:#795548;
+}
+
+@for $x from 0 through 100 {
+  /* -------- PADDING -------- */
+  .wp-#{$x} {
+      padding: #{$x}px !important;
+  }
+  .wpl-#{$x} {
+      padding-left: #{$x}px !important;
+  }
+  .wpr-#{$x} {
+      padding-right: #{$x}px !important;
+  }
+  .wpt-#{$x} {
+      padding-top: #{$x}px !important;
+  }
+  .wpb-#{$x} {
+      padding-bottom: #{$x}px !important;
+  }
+  .wpx-#{$x} {
+      padding-left: #{$x}px !important;
+      padding-right: #{$x}px !important;
+  }
+  .wpy-#{$x} {
+      padding-top: #{$x}px !important;
+      padding-bottom: #{$x}px !important;
+  }
+  /* --------- MARGIN --------- */
+  .wm-#{$x} {
+      margin: #{$x}px !important;
+  }
+  .wml-#{$x} {
+      margin-left: #{$x}px !important;
+  }
+  .wmr-#{$x} {
+      margin-right: #{$x}px !important;
+  }
+  .wmt-#{$x} {
+      margin-top: #{$x}px !important;
+  }
+  .wmb-#{$x} {
+      margin-bottom: #{$x}px !important;
+  }
+  .wmx-#{$x} {
+      margin-left: #{$x}px !important;
+      margin-right: #{$x}px !important;
+  }
+  .wmy-#{$x} {
+      margin-top: #{$x}px !important;
+      margin-bottom: #{$x}px !important;
+  }
+
+}
+
+
+::-webkit-scrollbar { 
+  width: 10px !important; 
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important; 
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important; 
+  -webkit-border-radius: 0 !important; 
+  border-radius: 0 !important; 
+}
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 0 !important; 
+  border-radius: 0 !important; 
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5) !important; 
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5) !important; 
+}
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:window-inactive {
+  background-color: var(--vermelho-escuro) !important; 
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: 'Open sans' !important;
+  font-size: 95%;
+}
+
+.main{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+a:visited,
+a:hover,
+a:link,
+a:active,
+a:focus,
+.btn-link:visited,
+.btn-link:hover,
+.btn-link:link,
+.btn-link:active,
+.btn-link:focus{
+    text-decoration: none;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.blockClick {
+    pointer-events: none !important;
+}
+
+.card {
+    box-shadow: 0 1px 4px -4px rgba(0, 0, 0, .2), 
+                0 1px 4px 0 rgba(0, 0, 0, .14), 
+                0 1px 4px 0 rgba(0, 0, 0, .12);
+}
+
+.font-light {
+    font-family: 'Open sans' !important;
+    font-weight: lighter !important;
+}
+
+.font-bold {
+    font-family: 'Open sans' !important;
+    font-weight: bold !important;
+}
+
+$offset: 187;
+$duration: 1.4s;
+
+.spinner {
+  animation: rotator $duration linear infinite;
+}
+
+@keyframes rotator {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(270deg); }
+}
+
+.path {
+  stroke-dasharray: $offset;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation:
+    dash $duration ease-in-out infinite, 
+    colors ($duration*4) ease-in-out infinite;
+}
+
+@keyframes colors {
+	0% { stroke: #4285F4; }
+	25% { stroke: #DE3E35; }
+	50% { stroke: #F7C223; }
+	75% { stroke: #1B9A59; }
+  100% { stroke: #4285F4; }
+}
+
+@keyframes dash {
+ 0% { stroke-dashoffset: $offset; }
+ 50% {
+   stroke-dashoffset: $offset/4;
+   transform:rotate(135deg);
+ }
+ 100% {
+   stroke-dashoffset: $offset;
+   transform:rotate(450deg);
+ }
+}

@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: "http://api-descompressao.grupoprazo.adv.br/api/",
 };
