@@ -4,8 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from "./admin.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { RelatoriosComponent } from "./relatorios/relatorios.component";
-import { ProdutosComponent } from "./produtos/produtos.component";
 import { HistoricoEstoqueComponent } from "./historico-estoque/historico-estoque.component";
+import { RelatorioComponent } from "./relatorio/relatorio.component";
 
 const routes: Routes = [
     { 
@@ -17,6 +17,7 @@ const routes: Routes = [
             { path: 'Usuarios', loadChildren: '../admin/usuarios/usuarios.module#UsuariosModule' },
             { path: 'Produtos', loadChildren: '../admin/produtos/produtos.module#ProdutosModule' },
             { path: 'Relatorios', component: RelatoriosComponent },
+            { path: 'Relatorio', component: RelatorioComponent },
             { path: 'Historico', component: HistoricoEstoqueComponent },
         ]
     }

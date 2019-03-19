@@ -15,7 +15,8 @@ export class CartService {
     _filtroCompra: 'FiltroCompra',
     _produtosMaisVendidosMes: 'ProdutosMaisVendidosMes',
     _gerarDocumentos: 'GerarDocumentos',
-    _gerarDocumentosExcel: 'GerarDocumentosExcel'
+    _gerarDocumentosExcel: 'GerarDocumentosExcel',
+    _relatorioDeCompras: 'RelatorioDeCompras'
   };
 
   constructor(
@@ -49,5 +50,9 @@ export class CartService {
         'Content-Type': 'application/octet-stream',
       }), responseType: 'blob'
     });
+  }
+
+  relatorioDeCompras(filtro: any) {
+    return this.http.post(this.api.request(this._CONTROLLER, this._METHOD._relatorioDeCompras), filtro);
   }
 }

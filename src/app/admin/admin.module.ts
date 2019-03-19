@@ -7,13 +7,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { RelatoriosComponent } from './relatorios/relatorios.component';
 import { HistoricoEstoqueComponent } from './historico-estoque/historico-estoque.component';
+import { RelatorioComponent } from './relatorio/relatorio.component';
 
 @NgModule({
   declarations: [
    AdminComponent,
    DashboardComponent,
    RelatoriosComponent,
-   HistoricoEstoqueComponent
+   HistoricoEstoqueComponent,
+   RelatorioComponent
   ],
   imports: [
     CommonModule,

@@ -34,6 +34,7 @@ export class AdminComponent implements OnInit {
     { title: 'Usuários', url: 'Usuarios', icon: 'people' },
     { title: 'Produtos', url: 'Produtos', icon: 'room_service' },
     { title: 'Relatório', url: 'Relatorios', icon: 'assignment' },
+    { title: 'Produtos Comprados Mês', url: 'Relatorio', icon: 'assignment' },
     { title: 'Histórico de Estoque', url: 'Historico', icon: 'list_alt' },
     // {
     //   title: 'Integrações',
