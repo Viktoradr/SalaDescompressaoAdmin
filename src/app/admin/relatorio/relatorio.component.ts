@@ -13,7 +13,7 @@ export class RelatorioComponent implements OnInit {
 
   produtos: Array<any>;
   filtro: Filtro;
-  mask = MASKS.dataMask;
+  mask = MASKS.dataHoraMask;
 
   constructor(
     private cartService: CartService,
@@ -26,12 +26,15 @@ export class RelatorioComponent implements OnInit {
     let date = new Date();
     date.setDate(11);
     date.setMonth(date.getMonth() - 1);
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
 
-    this.filtro.dataInicio = date.toLocaleDateString();
+    this.filtro.dataInicio = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 
     date.setDate(10);
     date.setMonth(date.getMonth() + 1);
-    this.filtro.dataFim = date.toLocaleDateString();
+    this.filtro.dataFim = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 
     this.cartService.relatorioDeCompras(this.filtro)
     .pipe(take(1))
@@ -41,6 +44,7 @@ export class RelatorioComponent implements OnInit {
   }
 
   buscar() {
+    this.produtos = new Array<any>();
     this.cartService.relatorioDeCompras(this.filtro)
     .pipe(take(1))
     .subscribe((result: any) => {

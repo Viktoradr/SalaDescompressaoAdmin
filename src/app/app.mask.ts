@@ -7,6 +7,7 @@ export class MASKS {
     static cnpjMask: Array<{}> = [ /\d/ , /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/ , /\d/, /\d/, '/', /\d/, /\d/,/\d/, /\d/, '-', /\d/, /\d/];
     static cepMask: Array<{}> = [/\d/ , /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
     static dataMask: Array<{}> = [/\d/ , /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
+    static dataHoraMask: Array<{}> = [/\d/ , /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/,' ',/\d/ , /\d/, ':',/\d/ , /\d/, ':',/\d/ , /\d/];
     static valorMask: Array<{}> = createNumberMask({
         prefix: '',
         suffix: '',
